@@ -1,5 +1,5 @@
 export const environment = {
   production: true,
-  apiKey: 'your_api_key_here',
-  baseUrl: 'http://localhost:8080/api/v1'
+  apiKey: '219a1a24-2f0a-4067-b3a5-7c657b9e6e27',
+  baseUrl: 'https://bbva-paanceas.azurewebsites.net/api/v1'
 };
