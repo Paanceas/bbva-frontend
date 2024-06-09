@@ -36,8 +36,6 @@ export class HttpService {
     } catch (error: unknown) {
       if (error instanceof Error) {
         console.error(`Error de conexión: ${error.message}`);
-      } else {
-        console.error('Error desconocido');
       }
       return null;
     }
@@ -46,7 +44,7 @@ export class HttpService {
   private handleArrayData<T>(data: any[], ifOnlyOne?: boolean): T[] | T | null {
     let dataUpdated = data;
     if (ifOnlyOne) {
-      return dataUpdated.length > 0 ? <T>dataUpdated[0] : null;
+      return <T>dataUpdated[0];
     }
     return dataUpdated.flat() as T[];
   }

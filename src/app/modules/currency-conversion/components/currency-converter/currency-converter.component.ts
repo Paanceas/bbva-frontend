@@ -34,7 +34,7 @@ export class CurrencyConverterComponent implements OnInit {
     if (this.amount && this.fromCurrency && this.toCurrency) {
       this.loader = true;
       const data: ConversionResponse = await this.currencyService.convertCurrency(this.amount, this.fromCurrency, this.toCurrency);
-      data.convertedAmount = Math.round(data.convertedAmount);
+      data.convertedAmount = data.convertedAmount;
       this.conversionResponse = data;
       this.loader = false;
     } else {
