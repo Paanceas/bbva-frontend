@@ -53,15 +53,26 @@
         </select>
       </div>
       <button
+        [disabled]="loader"
         type="submit"
         class="btn btn-primary btn-block mt-3"
         style="background-color: #004481; border-color: #004481"
       >
-        Convert
+        {{ loader ? "...Converting" : "Convert" }}
       </button>
     </form>
-    <div *ngIf="convertedAmount !== null" class="alert alert-success mt-3">
-      Converted Amount: {{ convertedAmount | currency }} {{ toCurrency }}
+    <div
+      *ngIf="conversionResponse.convertedAmount"
+      class="alert alert-success mt-3"
+    >
+      <strong>
+        Date: {{ conversionResponse.conversionDate | date : "dd/MM/yyyy" }}
+      </strong>
+      <hr />
+      Exchange Rate: {{ conversionResponse.conversionRate }}
+      <hr />
+      Converted Amount: {{ conversionResponse.convertedAmount | currency }}
+      {{ toCurrency }}
     </div>
   </div>
 </div>

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
+import { firstValueFrom, retry } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 type ResponseData<T> = T[] | T | null;
@@ -82,7 +82,9 @@ export class HttpService {
     const response: any = await firstValueFrom(
       this.http.get<any>(environment.baseUrl + url, {
         headers,
-      })
+      }).pipe(
+        retry(2)
+      )
     );
     return response as T;
   }

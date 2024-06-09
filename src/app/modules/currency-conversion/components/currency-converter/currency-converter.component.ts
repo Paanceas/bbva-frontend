@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ConversionResponse } from 'src/app/models/conversion-response.model';
 import { CurrencyService } from 'src/app/services/currency.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-currency-converter',
@@ -11,11 +13,16 @@ export class CurrencyConverterComponent implements OnInit {
   amount: number = 0;
   fromCurrency: string = 'USD';
   toCurrency: string = 'EUR';
-  convertedAmount: number | null = null;
+  conversionResponse: ConversionResponse = {} as ConversionResponse;
+
+  loader: boolean = false;
 
   constructor(private currencyService: CurrencyService) { }
 
   async ngOnInit(): Promise<void> {
+  }
+
+  async ngAfterViewInit(): Promise<void> {
     await this.loanSymbols();
   }
 
@@ -25,8 +32,17 @@ export class CurrencyConverterComponent implements OnInit {
 
   async convert(): Promise<void> {
     if (this.amount && this.fromCurrency && this.toCurrency) {
-      const data = await this.currencyService.convertCurrency(this.amount, this.fromCurrency, this.toCurrency);
-      this.convertedAmount = Math.round(data.convertedAmount);
+      this.loader = true;
+      const data: ConversionResponse = await this.currencyService.convertCurrency(this.amount, this.fromCurrency, this.toCurrency);
+      data.convertedAmount = Math.round(data.convertedAmount);
+      this.conversionResponse = data;
+      this.loader = false;
+    } else {
+      Swal.fire({
+        icon: 'warning',
+        title: 'Oops...',
+        text: 'Please fill all fields!',
+      });
     }
   }
 }
