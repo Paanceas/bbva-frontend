@@ -61,7 +61,7 @@
       </button>
     </form>
     <div *ngIf="convertedAmount !== null" class="alert alert-success mt-3">
-      Converted Amount: {{ convertedAmount }} {{ toCurrency }}
+      Converted Amount: {{ convertedAmount | currency }} {{ toCurrency }}
     </div>
   </div>
 </div>

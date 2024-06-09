@@ -9,7 +9,7 @@ export class ApiKeyInterceptor implements HttpInterceptor {
     const apiKey = environment.apiKey;
     const clonedRequest = request.clone({
       setHeaders: {
-        'API-KEY': apiKey
+        'api-key': apiKey,
       }
     });
     return next.handle(clonedRequest);

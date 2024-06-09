@@ -26,7 +26,7 @@ export class CurrencyConverterComponent implements OnInit {
   async convert(): Promise<void> {
     if (this.amount && this.fromCurrency && this.toCurrency) {
       const data = await this.currencyService.convertCurrency(this.amount, this.fromCurrency, this.toCurrency);
-      this.convertedAmount = data.convertedAmount;
+      this.convertedAmount = Math.round(data.convertedAmount);
     }
   }
 }
