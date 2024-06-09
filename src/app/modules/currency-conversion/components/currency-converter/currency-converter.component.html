@@ -1,0 +1,67 @@
+<div class="card">
+  <div
+    class="card-header text-center"
+    style="background-color: #004481; color: #ffffff"
+  >
+    <img
+      src="assets/logo_bbva_blanco.svg"
+      alt="BBVA Logo"
+      class="img-fluid mb-2"
+      style="max-width: 150px"
+    />
+    <h2>Currency Converter</h2>
+  </div>
+  <div class="card-body">
+    <form (ngSubmit)="convert()">
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input
+          type="number"
+          class="form-control"
+          id="amount"
+          [(ngModel)]="amount"
+          name="amount"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="fromCurrency">From</label>
+        <select
+          class="form-control"
+          id="fromCurrency"
+          [(ngModel)]="fromCurrency"
+          name="fromCurrency"
+          required
+        >
+          <option *ngFor="let key of symbols | keyvalue" [value]="key.key">
+            {{ key.key }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="toCurrency">To</label>
+        <select
+          class="form-control"
+          id="toCurrency"
+          [(ngModel)]="toCurrency"
+          name="toCurrency"
+          required
+        >
+          <option *ngFor="let key of symbols | keyvalue" [value]="key.key">
+            {{ key.key }}
+          </option>
+        </select>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary btn-block mt-3"
+        style="background-color: #004481; border-color: #004481"
+      >
+        Convert
+      </button>
+    </form>
+    <div *ngIf="convertedAmount !== null" class="alert alert-success mt-3">
+      Converted Amount: {{ convertedAmount }} {{ toCurrency }}
+    </div>
+  </div>
+</div>

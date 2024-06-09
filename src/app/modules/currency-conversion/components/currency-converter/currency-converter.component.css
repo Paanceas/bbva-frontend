@@ -1,0 +1,19 @@
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  background-color: #004481;
+  color: #FFFFFF;
+  text-align: center;
+  padding: 20px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.btn-primary {
+  background-color: #004481;
+  border-color: #004481;
+}
