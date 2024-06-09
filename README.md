@@ -42,15 +42,14 @@ Este proyecto consiste en una aplicación frontend desarrollada con Angular para
 - **Componentes:**
   - `app.component.ts`: Componente principal que maneja la lógica de la aplicación.
   - `currency-converter.component.ts`: Componente para la conversión de divisas.
-  - `currency-symbols.component.ts`: Componente para mostrar los símbolos de las divisas.
+  - `currency-page.component.ts`: Pagina de conversión de divisas
 
 - **Servicios:**
-  - `api.service.ts`: Servicio que maneja las peticiones HTTP a la API backend.
+  - `http.service.ts`: Servicio que maneja las peticiones HTTP a la API backend.
+  - `currency.service.ts`: Servicio que maneja las peticiones para la conversión de divisas.
 
 - **Modelos:**
-  - `conversion-request.model.ts`: Representa la solicitud de conversión de divisas.
   - `conversion-response.model.ts`: Representa la respuesta de la conversión de divisas.
-  - `currency-symbols.model.ts`: Representa los símbolos de las divisas.
 
 ## Ejecución del Proyecto
 
@@ -63,6 +62,12 @@ Este proyecto consiste en una aplicación frontend desarrollada con Angular para
 2. **Accede a la aplicación en el navegador:**
 
    Navega a `http://localhost:4200` para ver la aplicación en funcionamiento.
+
+1. **Compila y ejecuta las pruebas unitarias la aplicación:**
+
+   ```bash
+   ng test --code-coverage
+   ```
 
 ## Dependencias
 
@@ -79,9 +84,10 @@ El proyecto utiliza las siguientes dependencias:
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
-    "@ng-bootstrap/ng-bootstrap": "^13.1.0",
-    "bootstrap": "^5.3.3",
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.3.0",
     "rxjs": "~7.8.0",
+    "sweetalert2": "^11.6.13",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"
   },
@@ -114,3 +120,9 @@ Si deseas contribuir a este proyecto, por favor sigue estos pasos:
 ## Licencia
 
 Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más detalles.
+
+### AUTOR
+
+Este proyecto ha sido desarrollado por **Pablo Ceballos**.
+
+* Puedes encontrar mas repositorios del autor en GitHub siguiendo [este enlace](https://github.com/Paanceas).
